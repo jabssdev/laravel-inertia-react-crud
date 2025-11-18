@@ -14,7 +14,7 @@ class ProductController extends Controller
     public function index()
     {
         return inertia('products/index', [
-            'products' => Product::all()
+            'products' => Product::all() // Nunca utilizarlo para producción
         ]);
     }
 
@@ -23,7 +23,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return inertia('products/create', [
+            'products' => new Product()
+        ]);
     }
 
     /**
@@ -31,7 +33,7 @@ class ProductController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**

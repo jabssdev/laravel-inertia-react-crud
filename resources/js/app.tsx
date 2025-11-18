@@ -4,7 +4,10 @@ import { createInertiaApp } from '@inertiajs/react';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import { route as ziggyRoute } from 'ziggy-js';
 import { initializeTheme } from './hooks/use-appearance';
+
+window.route = ziggyRoute;
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
