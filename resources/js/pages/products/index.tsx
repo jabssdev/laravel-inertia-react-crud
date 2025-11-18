@@ -10,7 +10,7 @@ import {
 } from '@/components/ui/table';
 import AppLayout from '@/layouts/app-layout';
 import { type BreadcrumbItem } from '@/types';
-import { Head, Link } from '@inertiajs/react';
+import { Head, Link, useForm } from '@inertiajs/react';
 import { route } from 'ziggy-js';
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -29,6 +29,14 @@ interface Product {
 }
 
 export default function Index({ products }: { products: Product[] }) {
+    const { processing, delete: destroy } = useForm();
+
+    const handleDelete = (id: number) => {
+        if (confirm('Are you sure you want to delete this product?')) {
+            destroy(route('products.destroy', id));
+        }
+    };
+
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Products | List" />
@@ -65,7 +73,7 @@ export default function Index({ products }: { products: Product[] }) {
                                     <TableCell>{product.description}</TableCell>
                                     <TableCell>{product.stock}</TableCell>
                                     <TableCell>{product.price}</TableCell>
-                                    <TableCell className="text-right">
+                                    <TableCell className="space-x-2 text-right">
                                         <Link
                                             href={route(
                                                 'products.edit',
@@ -76,6 +84,15 @@ export default function Index({ products }: { products: Product[] }) {
                                                 Edit
                                             </Button>
                                         </Link>
+                                        <Button
+                                            disabled={processing}
+                                            onClick={() =>
+                                                handleDelete(product.id)
+                                            }
+                                            className="ml-2 cursor-pointer bg-red-500 hover:bg-red-600"
+                                        >
+                                            Delete
+                                        </Button>
                                     </TableCell>
                                 </TableRow>
                             ))}
