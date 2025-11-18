@@ -86,7 +86,11 @@ export default function Create() {
                             </div>
                         )}
                     </div>
-                    <Button type="submit" className="cursor-pointer">
+                    <Button
+                        disabled={processing}
+                        type="submit"
+                        className="cursor-pointer"
+                    >
                         Create Product
                     </Button>
                 </form>

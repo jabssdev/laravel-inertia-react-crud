@@ -98,7 +98,11 @@ export default function Edit({ product }: { product: Product }) {
                             </div>
                         )}
                     </div>
-                    <Button type="submit" className="cursor-pointer">
+                    <Button
+                        disabled={processing}
+                        type="submit"
+                        className="cursor-pointer"
+                    >
                         Edit Product
                     </Button>
                 </form>
