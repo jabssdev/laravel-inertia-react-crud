@@ -66,7 +66,16 @@ export default function Index({ products }: { products: Product[] }) {
                                     <TableCell>{product.stock}</TableCell>
                                     <TableCell>{product.price}</TableCell>
                                     <TableCell className="text-right">
-                                        Acciones
+                                        <Link
+                                            href={route(
+                                                'products.edit',
+                                                product.id,
+                                            )}
+                                        >
+                                            <Button className="cursor-pointer bg-slate-500 hover:bg-slate-600">
+                                                Edit
+                                            </Button>
+                                        </Link>
                                     </TableCell>
                                 </TableRow>
                             ))}
