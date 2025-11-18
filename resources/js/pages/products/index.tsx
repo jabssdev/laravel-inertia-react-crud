@@ -58,7 +58,7 @@ export default function Index({ products }: { products: Product[] }) {
                                 <TableHead>Description</TableHead>
                                 <TableHead>Stock</TableHead>
                                 <TableHead>Price</TableHead>
-                                <TableHead className="text-right">
+                                <TableHead className="text-center">
                                     Actions
                                 </TableHead>
                             </TableRow>
@@ -73,7 +73,17 @@ export default function Index({ products }: { products: Product[] }) {
                                     <TableCell>{product.description}</TableCell>
                                     <TableCell>{product.stock}</TableCell>
                                     <TableCell>{product.price}</TableCell>
-                                    <TableCell className="space-x-2 text-right">
+                                    <TableCell className="space-x-2 text-center">
+                                        <Link
+                                            href={route(
+                                                'products.show',
+                                                product.id,
+                                            )}
+                                        >
+                                            <Button className="cursor-pointer bg-green-500 hover:bg-green-600">
+                                                View
+                                            </Button>
+                                        </Link>
                                         <Link
                                             href={route(
                                                 'products.edit',
@@ -89,7 +99,7 @@ export default function Index({ products }: { products: Product[] }) {
                                             onClick={() =>
                                                 handleDelete(product.id)
                                             }
-                                            className="ml-2 cursor-pointer bg-red-500 hover:bg-red-600"
+                                            className="cursor-pointer bg-red-500 hover:bg-red-600"
                                         >
                                             Delete
                                         </Button>
