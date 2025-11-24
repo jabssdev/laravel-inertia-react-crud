@@ -23,9 +23,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return inertia('products/create', [
-            'products' => new Product()
-        ]);
+        return inertia('products/create');
     }
 
     /**
